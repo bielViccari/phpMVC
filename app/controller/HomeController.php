@@ -2,8 +2,13 @@
 
 class HomeController
 {
-    public function index() 
+    public function index()
     {
-        echo 'content';
+        try {
+            $collectionPosts = Postagem::selectAll();
+            var_dump($collectionPosts);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
     }
 }

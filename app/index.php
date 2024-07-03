@@ -1,8 +1,12 @@
 <?php
 require_once 'core/Core.php';
 
+require_once '../lib/Database/Connection.php';
+
 require_once 'controller/HomeController.php';
 require_once 'controller/ErroController.php';
+require_once 'model/Postagem.php';
+
 
 $template = file_get_contents('template/estrutura.html');
 
