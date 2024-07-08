@@ -16,6 +16,13 @@ class Core
             $controller = 'ErroController';
         }
         
-        call_user_func_array(array(new $controller, $acao),array());
+        if(isset($urLGet['id']) && $urLGet['id'] != null){
+            $id = $urLGet['id'];
+        } else {
+            $id = null;
+        }
+
+        // Ajustar a chamada de call_user_func_array para passar os parâmetros sem nomes
+        call_user_func_array(array(new $controller, $acao), array($id));
     }
 }

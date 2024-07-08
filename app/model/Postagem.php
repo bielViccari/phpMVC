@@ -20,4 +20,28 @@ class Postagem
         }
         return $result;
     }
+
+    public static function selectById($id = null)
+    {
+        $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM postagem WHERE id = :id";
+        $sql = $conn->prepare($sql);
+        $sql->bindValue(':id', $id, PDO::PARAM_INT);
+        $sql->execute();
+
+        $res = $sql->fetchObject('Postagem');
+
+        if(!$res) {
+            throw new Exception("Não foi encontrado nenhum registro no banco de dados");
+        } else {
+            $res->comentarios = Comentario::selectComments($res->id);
+
+            if(!$res->comentarios){
+                $res->comentarios = "Não existe nenhum comentário nesta publicação!";
+            }
+        }
+
+        return $res;
+    }
 }

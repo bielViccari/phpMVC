@@ -15,6 +15,7 @@ class HomeController
             $params = array();
             $params['posts'] = $collectionPosts;
 
+            //render the template(home.html) with the params($collectionPosts)
             $content = $template->render($params);
             echo($content);
         } catch (Exception $e) {

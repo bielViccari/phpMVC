@@ -4,8 +4,11 @@ require_once 'core/Core.php';
 require_once '../lib/Database/Connection.php';
 
 require_once 'controller/HomeController.php';
+require_once 'controller/PostController.php';
 require_once 'controller/ErroController.php';
+
 require_once 'model/Postagem.php';
+require_once'model/Comentario.php';
 
 require_once '../vendor/autoload.php';
 
